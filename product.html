@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail - E-Commerce Website</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="home">
+      <div class="logo">
+        <a href="index.html"><h1>E-Commerce Website</h1></a>
+      </div>
+      <button class="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="bar">
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li>
+            <a href="cart.html"
+              >Cart <span id="cart-count" class="cart-count">0</span></a
+            >
+          </li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="login.html" id="login-link">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="product-detail-section">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> &gt; <a href="shop.html">Shop</a> &gt;
+        <span id="breadcrumb-product">Product</span>
+      </div>
+
+      <div id="product-container" class="product-detail-container">
+        <!-- Product will be loaded here -->
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+          <p>Loading product...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products-section">
+      <h2 class="section-title">Related Products</h2>
+      <div id="related-products-container" class="product-grid">
+        <!-- Related products will be loaded here -->
+      </div>
+    </section>
+
+    <footer class="footer">
+      <h2 class="about" id="about">About Us</h2>
+      <p>
+        Welcome to our E-Commerce site that you can find everything you should
+        own!
+      </p>
+
+      <h2 class="contact" id="contact">Contact Us</h2>
+      <p>Have any questions? Feel free to reach out to us!</p>
+      <p>Email: 221005063@bakircay.edu.tr</p>
+      <p>Phone: +90 555 555 55 55</p>
+    </footer>
+
+    <script src="product.js"></script>
+  </body>
+</html>
