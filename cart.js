@@ -1,4 +1,4 @@
-// Cart Page JavaScript
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const FREE_SHIPPING_THRESHOLD = 100;
 const TAX_RATE = 0.08;
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
 });
 
-// Check login status and update UI
+
 function checkLoginStatus() {
   const user = JSON.parse(localStorage.getItem("user"));
   const loginLink = document.getElementById("login-link");
@@ -21,7 +21,7 @@ function checkLoginStatus() {
   }
 }
 
-// Setup mobile menu toggle
+
 function setupMobileMenu() {
   const menuBtn = document.querySelector(".mobile-menu-btn");
   const nav = document.querySelector(".bar");
@@ -34,7 +34,7 @@ function setupMobileMenu() {
   }
 }
 
-// Setup event listeners
+
 function setupEventListeners() {
   document
     .getElementById("clear-cart-btn")
@@ -44,7 +44,7 @@ function setupEventListeners() {
     .addEventListener("click", handleCheckout);
 }
 
-// Render cart items
+
 function renderCart() {
   const container = document.getElementById("cart-items-container");
   const clearBtn = document.getElementById("clear-cart-btn");
@@ -103,7 +103,7 @@ function renderCart() {
   updateSummary();
 }
 
-// Update item quantity
+
 function updateQuantity(productId, change) {
   const item = cart.find((item) => item.id === productId);
   if (!item) return;
@@ -120,7 +120,7 @@ function updateQuantity(productId, change) {
   renderCart();
 }
 
-// Remove item from cart
+
 function removeItem(productId) {
   cart = cart.filter((item) => item.id !== productId);
   saveCart();
@@ -128,7 +128,7 @@ function removeItem(productId) {
   showNotification("Item removed from cart");
 }
 
-// Clear entire cart
+
 function clearCart() {
   if (confirm("Are you sure you want to clear your cart?")) {
     cart = [];
@@ -138,7 +138,7 @@ function clearCart() {
   }
 }
 
-// Update order summary
+
 function updateSummary() {
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -155,12 +155,12 @@ function updateSummary() {
   document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
   document.getElementById("total").textContent = `$${total.toFixed(2)}`;
 
-  // Disable checkout if cart is empty
+
   const checkoutBtn = document.getElementById("checkout-btn");
   checkoutBtn.disabled = cart.length === 0;
 }
 
-// Handle checkout
+
 function handleCheckout() {
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -172,7 +172,7 @@ function handleCheckout() {
     return;
   }
 
-  // Show success message (demo only)
+
   alert(
     `Thank you for your order, ${
       user.name || user.email
@@ -181,19 +181,19 @@ function handleCheckout() {
     }`
   );
 
-  // Clear cart after successful checkout
+  
   cart = [];
   saveCart();
   renderCart();
 }
 
-// Save cart to localStorage
+
 function saveCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
 }
 
-// Update cart count in header
+
 function updateCartCount() {
   const cartCountElement = document.getElementById("cart-count");
   if (cartCountElement) {
@@ -203,7 +203,7 @@ function updateCartCount() {
   }
 }
 
-// Show notification
+
 function showNotification(message) {
   const existing = document.querySelector(".notification");
   if (existing) existing.remove();
