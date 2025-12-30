@@ -1,6 +1,4 @@
-/* ========================================
-   BASE STYLES & RESET
-======================================== */
+
 * {
   margin: 0;
   padding: 0;
@@ -20,9 +18,7 @@ a {
   color: inherit;
 }
 
-/* ========================================
-   HEADER & NAVIGATION
-======================================== */
+
 .home {
   display: flex;
   align-items: center;
@@ -90,7 +86,7 @@ a {
   width: 100%;
 }
 
-/* Cart Count Badge */
+
 .cart-count {
   background-color: #ffd700;
   color: #1a1a1a;
@@ -102,7 +98,7 @@ a {
   display: none;
 }
 
-/* Mobile Menu Button */
+
 .mobile-menu-btn {
   display: none;
   flex-direction: column;
@@ -136,9 +132,7 @@ a {
   transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* ========================================
-   HERO BANNER
-======================================== */
+
 .banner {
   width: 100%;
   height: 90vh;
@@ -204,9 +198,7 @@ a {
   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
 }
 
-/* ========================================
-   SHOP PAGE HERO
-======================================== */
+
 .shop-hero,
 .cart-hero {
   padding: 60px 20px;
@@ -228,9 +220,7 @@ a {
   font-size: 18px;
 }
 
-/* ========================================
-   SHOP PAGE LAYOUT
-======================================== */
+
 .shop-section {
   padding: 40px 20px;
   background-color: #0a0a0a;
@@ -244,7 +234,7 @@ a {
   gap: 40px;
 }
 
-/* Filters Sidebar */
+
 .filters-sidebar {
   background-color: #1a1a1a;
   padding: 30px;
@@ -329,9 +319,7 @@ a {
   font-size: 14px;
 }
 
-/* ========================================
-   PRODUCT GRID & CARDS
-======================================== */
+
 .featured-section,
 .related-products-section {
   padding: 60px 20px;
@@ -480,9 +468,7 @@ a {
   flex: 1;
 }
 
-/* ========================================
-   PRODUCT DETAIL PAGE
-======================================== */
+
 .product-detail-section {
   padding: 40px 20px;
   max-width: 1200px;
@@ -650,7 +636,7 @@ a {
   color: #4ade80;
 }
 
-/* Loading Spinner */
+
 .loading-spinner {
   display: flex;
   flex-direction: column;
@@ -680,7 +666,7 @@ a {
   color: #888;
 }
 
-/* Error Container */
+
 .error-container {
   text-align: center;
   padding: 60px;
@@ -698,9 +684,7 @@ a {
   margin-bottom: 30px;
 }
 
-/* ========================================
-   CART PAGE
-======================================== */
+
 .cart-section {
   padding: 40px 20px;
   min-height: 60vh;
@@ -849,7 +833,7 @@ a {
   color: #fff;
 }
 
-/* Empty Cart */
+
 .empty-cart {
   text-align: center;
   padding: 60px 20px;
@@ -871,7 +855,7 @@ a {
   margin-bottom: 30px;
 }
 
-/* Order Summary */
+
 .order-summary {
   background-color: #1a1a1a;
   padding: 30px;
@@ -951,9 +935,7 @@ a {
   color: #ffd700;
 }
 
-/* ========================================
-   AUTH / LOGIN PAGE
-======================================== */
+
 .auth-section {
   min-height: calc(100vh - 200px);
   display: flex;
@@ -1113,7 +1095,7 @@ a {
   color: #ffed4e;
 }
 
-/* User Profile */
+
 .profile-header {
   text-align: center;
   margin-bottom: 30px;
@@ -1180,9 +1162,7 @@ a {
   color: #fff;
 }
 
-/* ========================================
-   FOOTER
-======================================== */
+
 .footer {
   background-color: #1a1a1a;
   color: #b0b0b0;
@@ -1241,9 +1221,7 @@ a {
   color: #fff;
 }
 
-/* ========================================
-   NOTIFICATIONS
-======================================== */
+
 .notification {
   position: fixed;
   bottom: 30px;
@@ -1263,7 +1241,7 @@ a {
   transform: translateX(0);
 }
 
-/* No Results */
+
 .no-results,
 .error-message-display {
   grid-column: 1 / -1;
@@ -1273,11 +1251,9 @@ a {
   font-size: 18px;
 }
 
-/* ========================================
-   RESPONSIVE DESIGN
-======================================== */
 
-/* Tablet */
+
+
 @media (max-width: 1024px) {
   .home {
     padding: 15px 40px;
@@ -1316,7 +1292,7 @@ a {
   }
 }
 
-/* Mobile */
+
 @media (max-width: 768px) {
   .home {
     padding: 15px 20px;
@@ -1474,7 +1450,7 @@ a {
   }
 }
 
-/* Small Mobile */
+
 @media (max-width: 480px) {
   .logo h1 {
     font-size: 18px;
@@ -1503,3 +1479,4 @@ a {
     height: 70px;
   }
 }
+
