@@ -1,9 +1,9 @@
-// Shop Page JavaScript
+
 let allProducts = [];
 let filteredProducts = [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Update cart count on page load
+
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
   fetchAllProducts();
@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
 });
 
-// Check login status and update UI
+
 function checkLoginStatus() {
   const user = JSON.parse(localStorage.getItem("user"));
   const loginLink = document.getElementById("login-link");
@@ -21,7 +21,7 @@ function checkLoginStatus() {
   }
 }
 
-// Setup mobile menu toggle
+
 function setupMobileMenu() {
   const menuBtn = document.querySelector(".mobile-menu-btn");
   const nav = document.querySelector(".bar");
@@ -34,7 +34,6 @@ function setupMobileMenu() {
   }
 }
 
-// Fetch all products from API
 async function fetchAllProducts() {
   try {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -49,7 +48,7 @@ async function fetchAllProducts() {
   }
 }
 
-// Display products in grid
+
 function displayProducts(products) {
   const container = document.getElementById("products-container");
   const resultsCount = document.getElementById("results-count");
@@ -99,7 +98,7 @@ function displayProducts(products) {
     .join("");
 }
 
-// Generate star rating HTML
+
 function generateStars(rating) {
   const fullStars = Math.floor(rating);
   const halfStar = rating % 1 >= 0.5;
@@ -118,7 +117,7 @@ function generateStars(rating) {
   return stars;
 }
 
-// Setup filter event listeners
+
 function setupFilters() {
   const searchInput = document.getElementById("search-input");
   const categoryFilter = document.getElementById("category-filter");
@@ -133,7 +132,7 @@ function setupFilters() {
   clearBtn.addEventListener("click", clearFilters);
 }
 
-// Apply all filters
+
 function applyFilters() {
   const searchTerm = document
     .getElementById("search-input")
@@ -142,17 +141,17 @@ function applyFilters() {
   const priceRange = document.getElementById("price-filter").value;
   const sortBy = document.getElementById("sort-filter").value;
 
-  // Filter products
+  
   filteredProducts = allProducts.filter((product) => {
-    // Search filter
+    
     const matchesSearch =
       product.title.toLowerCase().includes(searchTerm) ||
       product.description.toLowerCase().includes(searchTerm);
 
-    // Category filter
+   
     const matchesCategory = category === "all" || product.category === category;
 
-    // Price filter
+  
     let matchesPrice = true;
     if (priceRange !== "all") {
       const price = product.price;
@@ -178,7 +177,7 @@ function applyFilters() {
     return matchesSearch && matchesCategory && matchesPrice;
   });
 
-  // Sort products
+
   switch (sortBy) {
     case "price-low":
       filteredProducts.sort((a, b) => a.price - b.price);
@@ -197,7 +196,7 @@ function applyFilters() {
   displayProducts(filteredProducts);
 }
 
-// Clear all filters
+
 function clearFilters() {
   document.getElementById("search-input").value = "";
   document.getElementById("category-filter").value = "all";
@@ -207,7 +206,7 @@ function clearFilters() {
   displayProducts(filteredProducts);
 }
 
-// Add product to cart
+
 function addToCart(productId) {
   const product = allProducts.find((p) => p.id === productId);
   if (!product) return;
@@ -231,7 +230,7 @@ function addToCart(productId) {
   showNotification("Product added to cart!");
 }
 
-// Update cart count in header
+
 function updateCartCount() {
   const cartCountElement = document.getElementById("cart-count");
   if (cartCountElement) {
@@ -241,9 +240,9 @@ function updateCartCount() {
   }
 }
 
-// Show notification
+
 function showNotification(message) {
-  // Remove existing notification
+
   const existing = document.querySelector(".notification");
   if (existing) existing.remove();
 
