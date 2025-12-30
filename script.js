@@ -1,4 +1,4 @@
-// Main Script for Homepage
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,26 +8,26 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
 });
 
-// Check login status and update UI
+
 function checkLoginStatus() {
   const user = JSON.parse(localStorage.getItem("user"));
   const loginLink = document.getElementById("login-link");
   const welcomeMessage = document.getElementById("welcome-message");
 
   if (user) {
-    // Update login link to show user name
+  
     if (loginLink) {
       loginLink.textContent = user.name ? user.name.split(" ")[0] : "Account";
     }
 
-    // Show personalized greeting
+ 
     if (welcomeMessage && user.name) {
       welcomeMessage.textContent = `Welcome, ${user.name.split(" ")[0]}!`;
     }
   }
 }
 
-// Setup mobile menu toggle
+
 function setupMobileMenu() {
   const menuBtn = document.querySelector(".mobile-menu-btn");
   const nav = document.querySelector(".bar");
@@ -40,7 +40,7 @@ function setupMobileMenu() {
   }
 }
 
-// Update cart count in header
+
 function updateCartCount() {
   const cartCountElement = document.getElementById("cart-count");
   if (cartCountElement) {
@@ -50,13 +50,13 @@ function updateCartCount() {
   }
 }
 
-// Fetch featured products from API
+
 async function fetchFeaturedProducts() {
   try {
     const response = await fetch("https://fakestoreapi.com/products");
     const data = await response.json();
 
-    // Get 4 random featured products
+    
     const featuredProducts = data.sort(() => 0.5 - Math.random()).slice(0, 4);
 
     const container = document.getElementById("featured-container");
@@ -112,7 +112,7 @@ async function fetchFeaturedProducts() {
   }
 }
 
-// Generate star rating HTML
+
 function generateStars(rating) {
   const fullStars = Math.floor(rating);
   const halfStar = rating % 1 >= 0.5;
@@ -131,7 +131,7 @@ function generateStars(rating) {
   return stars;
 }
 
-// Add product to cart
+
 function addToCart(productId, title, price, image) {
   const existingItem = cart.find((item) => item.id === productId);
 
@@ -152,7 +152,7 @@ function addToCart(productId, title, price, image) {
   showNotification("Product added to cart!");
 }
 
-// Show notification
+
 function showNotification(message) {
   const existing = document.querySelector(".notification");
   if (existing) existing.remove();
@@ -168,3 +168,4 @@ function showNotification(message) {
     setTimeout(() => notification.remove(), 300);
   }, 2000);
 }
+
