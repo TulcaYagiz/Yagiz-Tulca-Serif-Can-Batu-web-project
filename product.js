@@ -1,4 +1,4 @@
-// Product Detail Page JavaScript
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let currentProduct = null;
 let allProducts = [];
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupMobileMenu();
 });
 
-// Check login status and update UI
+
 function checkLoginStatus() {
   const user = JSON.parse(localStorage.getItem("user"));
   const loginLink = document.getElementById("login-link");
@@ -19,7 +19,7 @@ function checkLoginStatus() {
   }
 }
 
-// Setup mobile menu toggle
+
 function setupMobileMenu() {
   const menuBtn = document.querySelector(".mobile-menu-btn");
   const nav = document.querySelector(".bar");
@@ -32,13 +32,13 @@ function setupMobileMenu() {
   }
 }
 
-// Get product ID from URL
+
 function getProductId() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get("id");
 }
 
-// Load product details
+
 async function loadProduct() {
   const productId = getProductId();
 
@@ -48,11 +48,11 @@ async function loadProduct() {
   }
 
   try {
-    // Fetch all products (for related products)
+  
     const allResponse = await fetch("https://fakestoreapi.com/products");
     allProducts = await allResponse.json();
 
-    // Find current product
+  
     currentProduct = allProducts.find((p) => p.id === parseInt(productId));
 
     if (!currentProduct) {
@@ -63,7 +63,7 @@ async function loadProduct() {
     displayProduct(currentProduct);
     loadRelatedProducts(currentProduct);
 
-    // Update page title
+ 
     document.title = `${currentProduct.title} - E-Commerce Website`;
   } catch (error) {
     console.error("Error loading product:", error);
@@ -71,7 +71,7 @@ async function loadProduct() {
   }
 }
 
-// Display product details
+
 function displayProduct(product) {
   const container = document.getElementById("product-container");
   const breadcrumb = document.getElementById("breadcrumb-product");
@@ -130,7 +130,7 @@ function displayProduct(product) {
     `;
 }
 
-// Load related products (same category)
+
 function loadRelatedProducts(product) {
   const container = document.getElementById("related-products-container");
 
@@ -139,7 +139,7 @@ function loadRelatedProducts(product) {
     .slice(0, 4);
 
   if (relatedProducts.length === 0) {
-    // Show random products if no related products in same category
+   
     const randomProducts = allProducts
       .filter((p) => p.id !== product.id)
       .sort(() => 0.5 - Math.random())
@@ -187,7 +187,7 @@ function displayRelatedProducts(container, products) {
     .join("");
 }
 
-// Generate star rating HTML
+
 function generateStars(rating) {
   const fullStars = Math.floor(rating);
   const halfStar = rating % 1 >= 0.5;
@@ -206,7 +206,7 @@ function generateStars(rating) {
   return stars;
 }
 
-// Quantity controls
+
 function increaseQty() {
   const input = document.getElementById("quantity-input");
   if (input.value < 99) {
@@ -221,7 +221,7 @@ function decreaseQty() {
   }
 }
 
-// Add to cart from product detail page
+
 function addToCartFromDetail() {
   if (!currentProduct) return;
 
@@ -247,7 +247,7 @@ function addToCartFromDetail() {
   showNotification(`Added ${quantity} item(s) to cart!`);
 }
 
-// Add to cart (for related products)
+
 function addToCart(productId) {
   const product = allProducts.find((p) => p.id === productId);
   if (!product) return;
@@ -271,7 +271,7 @@ function addToCart(productId) {
   showNotification("Product added to cart!");
 }
 
-// Show error message
+
 function showError(message) {
   const container = document.getElementById("product-container");
   container.innerHTML = `
@@ -283,7 +283,7 @@ function showError(message) {
     `;
 }
 
-// Update cart count in header
+
 function updateCartCount() {
   const cartCountElement = document.getElementById("cart-count");
   if (cartCountElement) {
@@ -293,7 +293,7 @@ function updateCartCount() {
   }
 }
 
-// Show notification
+
 function showNotification(message) {
   const existing = document.querySelector(".notification");
   if (existing) existing.remove();
