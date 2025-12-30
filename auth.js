@@ -1,4 +1,4 @@
-// Firebase Configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyD5sJpkJx53gkvln_B-EceaJFkQnzSOoS8",
   authDomain: "login-8e965.firebaseapp.com",
@@ -9,12 +9,12 @@ const firebaseConfig = {
   measurementId: "G-LYC0SWLE96",
 };
 
-// Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-// DOM Elements
+
 let loginFormContainer, registerFormContainer, userProfile;
 let loginForm, registerForm;
 let googleSigninBtn, googleSignupBtn, logoutBtn;
@@ -45,18 +45,18 @@ function initializeElements() {
 }
 
 function setupEventListeners() {
-  // Form submissions
+
   loginForm.addEventListener("submit", handleLogin);
   registerForm.addEventListener("submit", handleRegister);
 
-  // Google Sign-In
+
   googleSigninBtn.addEventListener("click", handleGoogleSignIn);
   googleSignupBtn.addEventListener("click", handleGoogleSignIn);
 
-  // Logout
+
   logoutBtn.addEventListener("click", handleLogout);
 
-  // Toggle forms
+
   showRegisterLink.addEventListener("click", (e) => {
     e.preventDefault();
     showRegister();
@@ -68,7 +68,7 @@ function setupEventListeners() {
   });
 }
 
-// Setup mobile menu toggle
+
 function setupMobileMenu() {
   const menuBtn = document.querySelector(".mobile-menu-btn");
   const nav = document.querySelector(".bar");
@@ -81,15 +81,15 @@ function setupMobileMenu() {
   }
 }
 
-// Check authentication state
+
 function checkAuthState() {
-  // First check localStorage for existing user
+
   const storedUser = JSON.parse(localStorage.getItem("user"));
   if (storedUser) {
     showUserProfile(storedUser);
   }
 
-  // Then listen for Firebase auth changes
+
   auth.onAuthStateChanged((user) => {
     if (user) {
       const userData = {
@@ -105,7 +105,7 @@ function checkAuthState() {
   });
 }
 
-// Handle normal login
+
 function handleLogin(e) {
   e.preventDefault();
   clearErrors();
@@ -113,7 +113,6 @@ function handleLogin(e) {
   const email = document.getElementById("login-email").value.trim();
   const password = document.getElementById("login-password").value;
 
-  // Validation
   let isValid = true;
 
   if (!validateEmail(email)) {
@@ -128,7 +127,7 @@ function handleLogin(e) {
 
   if (!isValid) return;
 
-  // Check localStorage for registered users (demo purposes)
+
   const registeredUsers =
     JSON.parse(localStorage.getItem("registeredUsers")) || [];
   const user = registeredUsers.find(
@@ -151,7 +150,7 @@ function handleLogin(e) {
   }
 }
 
-// Handle registration
+
 function handleRegister(e) {
   e.preventDefault();
   clearErrors();
@@ -161,7 +160,7 @@ function handleRegister(e) {
   const password = document.getElementById("register-password").value;
   const confirmPassword = document.getElementById("register-confirm").value;
 
-  // Validation
+
   let isValid = true;
 
   if (name.length < 2) {
@@ -189,7 +188,7 @@ function handleRegister(e) {
 
   if (!isValid) return;
 
-  // Check if user already exists
+
   const registeredUsers =
     JSON.parse(localStorage.getItem("registeredUsers")) || [];
   if (registeredUsers.find((u) => u.email === email)) {
@@ -197,18 +196,17 @@ function handleRegister(e) {
     return;
   }
 
-  // Register new user (demo - stores in localStorage)
   const newUser = {
     uid: "local_" + Date.now(),
     name: name,
     email: email,
-    password: password, // In real app, this should be hashed
+    password: password, 
   };
 
   registeredUsers.push(newUser);
   localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
 
-  // Auto login after registration
+  
   const userData = {
     uid: newUser.uid,
     name: newUser.name,
@@ -221,7 +219,7 @@ function handleRegister(e) {
   showUserProfile(userData);
 }
 
-// Handle Google Sign-In
+
 async function handleGoogleSignIn() {
   try {
     const result = await auth.signInWithPopup(googleProvider);
@@ -250,7 +248,7 @@ async function handleGoogleSignIn() {
   }
 }
 
-// Handle logout
+
 async function handleLogout() {
   try {
     await auth.signOut();
@@ -263,7 +261,7 @@ async function handleLogout() {
   showLogin();
 }
 
-// Show user profile
+
 function showUserProfile(user) {
   loginFormContainer.style.display = "none";
   registerFormContainer.style.display = "none";
@@ -277,19 +275,19 @@ function showUserProfile(user) {
   document.getElementById("profile-type").textContent =
     user.provider === "google" ? "Google Account" : "Standard";
 
-  // Update cart count
+ 
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   document.getElementById("profile-cart-count").textContent = cartCount;
 
-  // Update login link in header
+ 
   const loginLink = document.getElementById("login-link");
   if (loginLink) {
     loginLink.textContent = user.name ? user.name.split(" ")[0] : "Account";
   }
 }
 
-// Show login form
+
 function showLogin() {
   loginFormContainer.style.display = "block";
   registerFormContainer.style.display = "none";
@@ -298,7 +296,7 @@ function showLogin() {
   clearErrors();
 }
 
-// Show register form
+
 function showRegister() {
   loginFormContainer.style.display = "none";
   registerFormContainer.style.display = "block";
@@ -307,7 +305,7 @@ function showRegister() {
   clearErrors();
 }
 
-// Validation helpers
+
 function validateEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
@@ -328,7 +326,7 @@ function clearErrors() {
   });
 }
 
-// Update cart count in header
+
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartCountElement = document.getElementById("cart-count");
@@ -339,7 +337,7 @@ function updateCartCount() {
   }
 }
 
-// Show notification
+
 function showNotification(message) {
   const existing = document.querySelector(".notification");
   if (existing) existing.remove();
